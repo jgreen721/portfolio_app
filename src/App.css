@@ -1,0 +1,33 @@
+.app[data-theme="light"] {
+  --mainColor: rgb(15, 15, 15);
+  --mainBg: rgb(235, 235, 235);
+}
+.app[data-theme="dark"] {
+  --mainColor: rgb(235, 235, 235);
+  --mainBg: rgb(15, 15, 15);
+}
+
+.app {
+  height: 200vh;
+  /* border: 5px solid red; */
+  max-width: 85rem;
+  width: 100%;
+  margin: 0 auto;
+  transform: scaleY(0);
+  transform-origin: top;
+  position: relative;
+  animation: introapp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  --mainFont: var(--openSans);
+  --fancyFont: var(--archivo);
+  color: var(--mainColor);
+}
+
+@keyframes introapp {
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.thin {
+  font-weight: 200;
+}

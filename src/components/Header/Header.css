@@ -1,0 +1,134 @@
+.header {
+  height: 75vh;
+  width: 100%;
+  position: relative;
+}
+
+@property --percent1 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+@property --percent2 {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 110%;
+}
+
+.header-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    var(--mainColor) var(--percent1),
+    var(--mainBg),
+    var(--mainColor) var(--percent2)
+  );
+  animation: animateheader 5s 1s linear forwards;
+  font-family: var(--fancyFont);
+  color: var(--mainColor);
+}
+
+.header-content::after {
+  content: "";
+  position: absolute;
+  width: 45vmin;
+  height: 45vmin;
+  background: radial-gradient(yellow, white);
+  filter: blur(65px);
+  border-radius: 50%;
+  transform: scale(0);
+  animation: animateglowingball 1s 4s forwards;
+}
+
+@keyframes animateglowingball {
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes animateheader {
+  0% {
+    --percent1: 100%;
+    --percent2: 110%;
+  }
+
+  25% {
+    --percent1: -10%;
+    --percent2: 5%;
+  }
+  50% {
+    --percent1: 70%;
+    --percent2: 90%;
+  }
+
+  65% {
+    --percent1: 30%;
+    --percent2: 50%;
+  }
+
+  75% {
+    --percent1: 0%;
+    --percent2: 100%;
+  }
+
+  /* 95% {
+    --percent1: 0%;
+    --percent2: 100%;
+  } */
+
+  100% {
+    --percent1: -55%;
+    --percent2: 155%;
+  }
+}
+
+.header-h1-container {
+  position: relative;
+  z-index: 5;
+}
+
+.header-h1 {
+  /* text-shadow: 1px 2px 10px white; */
+  transition: 0.25s ease;
+}
+
+@property --transparent_percent {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+
+.shadow-box {
+  position: absolute;
+  bottom: -55%;
+  left: 0;
+  opacity: 0.8;
+}
+
+.header-h1-shadow {
+  filter: blur(5px);
+  transform: rotateX(120deg) skew(-30deg) translateX(2.5rem);
+  background-image: linear-gradient(
+    transparent var(--transparent_percent),
+    var(--mainColor)
+  );
+  background-clip: text;
+  color: transparent;
+  animation: animateheadertextshadow 1s 5.5s linear forwards;
+}
+
+@keyframes animateheadertextshadow {
+  100% {
+    --transparent_percent: 5%;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .header-h1-shadow {
+    transform: rotateX(120deg) skew(-30deg) translateX(1.25rem);
+  }
+}
