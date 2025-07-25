@@ -1,5 +1,5 @@
 .header {
-  height: 75vh;
+  height: 650px;
   width: 100%;
   position: relative;
 }
@@ -27,7 +27,7 @@
     var(--mainBg),
     var(--mainColor) var(--percent2)
   );
-  animation: animateheader 5s 1s linear forwards;
+  animation: animateheader 3s 1s linear forwards;
   font-family: var(--fancyFont);
   color: var(--mainColor);
 }
@@ -37,7 +37,7 @@
   position: absolute;
   width: 45vmin;
   height: 45vmin;
-  background: radial-gradient(yellow, white);
+  background: radial-gradient(green, var(--mainBg));
   filter: blur(65px);
   border-radius: 50%;
   transform: scale(0);
@@ -75,11 +75,6 @@
     --percent2: 100%;
   }
 
-  /* 95% {
-    --percent1: 0%;
-    --percent2: 100%;
-  } */
-
   100% {
     --percent1: -55%;
     --percent2: 155%;
@@ -92,14 +87,7 @@
 }
 
 .header-h1 {
-  /* text-shadow: 1px 2px 10px white; */
   transition: 0.25s ease;
-}
-
-@property --transparent_percent {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 100%;
 }
 
 .shadow-box {
@@ -107,6 +95,12 @@
   bottom: -55%;
   left: 0;
   opacity: 0.8;
+}
+
+@property --transparent_percent {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
 }
 
 .header-h1-shadow {
@@ -118,13 +112,20 @@
   );
   background-clip: text;
   color: transparent;
-  animation: animateheadertextshadow 1s 5.5s linear forwards;
+  animation: animateheadertextshadow 0.5s 3s linear forwards;
 }
 
 @keyframes animateheadertextshadow {
   100% {
     --transparent_percent: 5%;
   }
+}
+
+.header-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 @media screen and (max-width: 650px) {
